@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+	base
+	laser:hokuyo
+	IMU
+-->
+<robot name="roadrobotH" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+  <xacro:include filename="$(find mygazebo)/urdf/roadrobotH_base.urdf.xacro"/>
+  <xacro:include filename="$(find mygazebo)/urdf/roadrobotH_laser.urdf.xacro"/>
+<!--  <xacro:include filename="$(find mygazebo)/urdf/mycar_kinect.urdf.xacro"/>-->
+
+<roadrobotH_base/>
+<roadrobotH_laser/>
+
+</robot>
+
+
+
+
+
+

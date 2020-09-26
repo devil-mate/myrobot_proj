@@ -1,0 +1,8 @@
+<launch>
+    <arg name="model"/>
+
+    <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />   
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-unpause -urdf -model macroed -param robot_description -z 0.1"/>
+
+</launch>

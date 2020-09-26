@@ -1,0 +1,259 @@
+<?xml version="1.0"?>  
+<robot name="myrobot02" xmlns:xacro="http://ros.org/wiki/xacro">  
+  <xacro:property name="M_PI" value="3.14159"/>    
+  <xacro:property name="base_x" value="0.33" />  
+  <xacro:property name="base_y" value="0.33" /> 
+<link name="base_link">
+    <inertial>
+      <origin
+        xyz="0.000454836605433948 1.27332861349781E-18 0.000181934642173575"
+        rpy="0 0 0" />
+      <mass
+        value="0.497309733552923" />
+      <inertia
+        ixx="0.000379491084127215"
+        ixy="-2.59493525107028E-19"
+        ixz="-3.57796209039485E-06"
+        iyy="0.00138864533975945"
+        iyz="-4.48378120593819E-21"
+        izz="0.00169173411179082" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car-3/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car-3/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="wheel_1">
+    <inertial>
+      <origin
+        xyz="2.08756043780373E-05 5.32859680283521E-06 -6.93889390390723E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.0282994666235368" />
+      <inertia
+        ixx="6.59828205801096E-06"
+        ixy="-3.54146284907832E-09"
+        ixz="-4.2351647362715E-22"
+        iyy="1.27373747424717E-05"
+        iyz="7.11375326795604E-23"
+        izz="6.61215628796161E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car-3/meshes/wheel_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car-3/meshes/wheel_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_1_to_base_link"
+    type="continuous">
+    <origin
+      xyz="0.07 0.052 0"
+      rpy="0 -0.75239 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="wheel_2">
+    <inertial>
+      <origin
+        xyz="2.08756043780373E-05 5.32859680283521E-06 -1.44387083394547E-35"
+        rpy="0 0 0" />
+      <mass
+        value="0.0282994666235368" />
+      <inertia
+        ixx="6.59828205801097E-06"
+        ixy="-3.54146284907845E-09"
+        ixz="4.94314925543529E-39"
+        iyy="1.27373747424718E-05"
+        iyz="-8.12167230901508E-39"
+        izz="6.61215628796161E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car-3/meshes/wheel_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car-3/meshes/wheel_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_2_to_base_link"
+    type="continuous">
+    <origin
+      xyz="-0.07 0.052 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="wheel_3">
+    <inertial>
+      <origin
+        xyz="2.08756043780373E-05 5.32859680283521E-06 -1.44387083394547E-35"
+        rpy="0 0 0" />
+      <mass
+        value="0.0282994666235368" />
+      <inertia
+        ixx="6.59828205801097E-06"
+        ixy="-3.54146284907845E-09"
+        ixz="4.94314925543529E-39"
+        iyy="1.27373747424718E-05"
+        iyz="-8.12167230901508E-39"
+        izz="6.61215628796161E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car-3/meshes/wheel_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car-3/meshes/wheel_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_3_to_base_link"
+    type="continuous">
+    <origin
+      xyz="0.07 -0.052 0"
+      rpy="0 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_3" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="wheel_4">
+    <inertial>
+      <origin
+        xyz="2.08756043780511E-05 5.32859680283521E-06 -1.44387083394547E-35"
+        rpy="0 0 0" />
+      <mass
+        value="0.0282994666235368" />
+      <inertia
+        ixx="6.59828205801097E-06"
+        ixy="-3.54146284907845E-09"
+        ixz="4.94314925543529E-39"
+        iyy="1.27373747424718E-05"
+        iyz="-8.12167230901508E-39"
+        izz="6.61215628796161E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car-3/meshes/wheel_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car-3/meshes/wheel_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_4_to_base_link"
+    type="continuous">
+    <origin
+      xyz="-0.07 -0.052 0"
+      rpy="0 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_4" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+ <xacro:car_gazebo />
+</robot>
+

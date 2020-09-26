@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<robot name="roadrobotH_common_property" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+
+    <xacro:property name="mediumlength" value="1.8" />
+    <xacro:property name="mediumwidth" value="1.3" />
+    <xacro:property name="mediumheight" value="0.2" />
+    <xacro:property name="pi" value="3.1415926" />
+</robot>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<robot name="mycar_base_property" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <xacro:property name="length" value="1" />
+    <xacro:property name="width" value="0.9" />
+    <xacro:property name="height" value="0.2" />
+    <xacro:property name="wheelLen" value="0.05" />
+    <xacro:property name="wheeldiam" value="0.1" />
+    <xacro:property name="clength" value="0.02" />
+    <xacro:property name="radius" value="0.05" />
+    <xacro:property name="baselen" value="0.4" />
+    <xacro:property name="pi" value="3.1415926" />
+</robot>
