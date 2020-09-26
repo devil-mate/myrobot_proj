@@ -484,7 +484,6 @@ void RoadrobotHDrive::getWheelVelocities()
         }else {
             velocityOfOmega = fabs(va * radius);// w部分 速度大小
             double wheelVectorAngle[4] = {0, 0, 0, 0};
-
 //            wheelVectorAngle[0] = va < 0 ?  alpha: PI+ alpha;
 //            wheelVectorAngle[1] = va < 0 ? -(PI/2+alpha) : (PI - alpha);
 //            wheelVectorAngle[2] = va < 0 ? PI+ alpha :  alpha;

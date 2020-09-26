@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>mygazebo</name>
+  <name>myrobot_orbslam</name>
   <version>0.0.0</version>
-  <description>The mygazebo package</description>
+  <description>The myrobot_orbslam package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/mygazebo</url> -->
+  <!-- <url type="website">http://wiki.ros.org/myrobot_orbslam</url> -->
 
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->
@@ -55,12 +55,9 @@
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
-  <build_export_depend>gazebo_msgs</build_export_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
-  <exec_depend>gazebo_msgs</exec_depend>
-
 
 
   <!-- The export tag contains other, unspecified, tags -->

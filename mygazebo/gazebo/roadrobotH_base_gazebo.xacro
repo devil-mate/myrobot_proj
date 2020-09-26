@@ -33,6 +33,7 @@
   <gazebo>
     <!-- <plugin name="differential_drive_controller" filename="libRoadrobotHDrive.so"> -->
     <plugin name="differential_drive_controller" filename="/home/jl/catkin_ws/devel/lib/libPluginTest.so">
+
      <!-- <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so"> -->
              <alwaysOn>true</alwaysOn>
             <updateRate>50.0</updateRate>

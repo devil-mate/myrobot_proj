@@ -1,6 +1,4 @@
 test
 gazebo包：gazebo练习
 	建立模型，组成环境，在gazebo中启动
-	
 launch 中，不同的机器人放在不同的launch中
-
