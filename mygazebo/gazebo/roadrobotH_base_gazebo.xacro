@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<!--
+	base
+	laser:hokuyo
+	IMU
+-->
+<robot name="roadrobotH_base_sim" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+  <xacro:macro name="roadrobotH_base_sim">
+
+  <gazebo reference="base_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>base_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>base_link</frameName>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+    
+
+
+
+  <gazebo>
+    <!-- <plugin name="differential_drive_controller" filename="libRoadrobotHDrive.so"> -->
+    <plugin name="differential_drive_controller" filename="/home/jl/catkin_ws/devel/lib/libPluginTest.so">
+     <!-- <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so"> -->
+             <alwaysOn>true</alwaysOn>
+            <updateRate>50.0</updateRate>
+            <leftFrontJoint>left_front_wheel_joint</leftFrontJoint>
+            <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
+            <rightBackJoint>right_back_wheel_joint</rightBackJoint>
+            <leftBackJoint>left_back_wheel_joint</leftBackJoint>
+            
+
+            <leftFrontLegJoint>left_front_leg_base_joint</leftFrontLegJoint>
+            <rightFrontLegJoint>right_front_leg_base_joint</rightFrontLegJoint>
+            <rightBackLegJoint>right_back_leg_base_joint</rightBackLegJoint>
+            <leftBackLegJoint>left_back_leg_base_joint</leftBackLegJoint>
+
+
+            <wheelSeparation>1.0</wheelSeparation>
+            <wheelDiameter>0.5</wheelDiameter>
+            <wheelBase_x>0.5</wheelBase_x>
+            <wheelBase_y>0.7</wheelBase_y>
+            
+
+            <!-- <torque>100.0</torque> -->
+            <legTorque>100.0</legTorque>
+            <wheelTorque>600</wheelTorque>
+            <commandTopic>cmd_vel</commandTopic>
+            <odometryTopic>odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame>
+            <robotBaseFrame>base_link</robotBaseFrame>
+            <publishWheelTF>true</publishWheelTF>
+            <publishWheelJointState>true</publishWheelJointState>
+            <legacyMode>true</legacyMode>
+            <wheelAcceleration>1</wheelAcceleration>
+        </plugin>
+    </gazebo>
+
+<!-- wheel -->
+  <transmission name="left_front_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_front_wheel_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_front_wheel_joint_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+<transmission name="right_front_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="right_front_leg_base_joint">
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="right_front_wheel_joint_motor">
+    <mechanicalReduction>50</mechanicalReduction>
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </actuator>
+</transmission>
+
+  <transmission name="left_back_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_back_wheel_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_backt_wheel_joint_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+<transmission name="right_back_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="right_back_wheel_joint">
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="right_back_wheel_joint_motor">
+    <mechanicalReduction>50</mechanicalReduction>
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </actuator>
+</transmission>
+<!-- leg -->
+
+ <transmission name="left_frontLeg_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_front_leg_base_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_frontLeg_joint_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+<transmission name="right_frontLeg_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="right_front_leg_base_joint">
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="right_frontLeg_joint_motor">
+    <mechanicalReduction>50</mechanicalReduction>
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </actuator>
+</transmission>
+
+  <transmission name="left_backLeg_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_back_leg_base_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_backLeg_joint_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+<transmission name="right_backLeg_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="right_back_leg_base_joint">
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="right_backLeg_joint_motor">
+    <mechanicalReduction>50</mechanicalReduction>
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </actuator>
+</transmission>
+
+<gazebo>
+  <plugin name="gps" filename="libhector_gazebo_ros_gps.so">
+      <updateRate>10.0</updateRate>
+      <topicName>sensor_msgs/NavSatFix</topicName>
+      <gaussianNoise>0.0 0.0 0.0</gaussianNoise>
+      <offset>0 0 0</offset>
+      <velocityGaussianNoise>0 0 0</velocityGaussianNoise>
+      <frameId>base_link</frameId>
+  </plugin>
+</gazebo>
+      <!-- ros_control plugin -->
+<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/robot</robotNamespace>
+    </plugin>
+  </gazebo>
+
+    </xacro:macro>
+</robot>

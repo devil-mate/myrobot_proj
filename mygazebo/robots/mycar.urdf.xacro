@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<!--mycar.urdf.xacro 不能直接作为base ,因为base和激光head 把mycar分成了几部分;transmission也是放在gazebo文件中的-->
+<robot name="smartcar_body" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    <xacro:property name="length" value="1" />
+    <xacro:property name="width" value="0.5" />
+    <xacro:property name="height" value="0.1" />
+    <xacro:property name="wheelLen" value="0.05" />
+    <xacro:property name="wheeldiam" value="0.1" />
+  <xacro:property name="wheeldis" value="0.15" />
+  <xacro:property name="polelen" value="0.2" />
+  <xacro:property name="bodylen" value="0.6" />
+  <xacro:property name="baselen" value="0.4" />
+  <xacro:property name="pi" value="3.1415926" />
+
+    <xacro:macro name="default_inertial" params="mass">
+    <inertial>
+      <mass value="${mass}" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>
+  </xacro:macro>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="${length} ${width} ${height}"/>
+    </geometry>
+    <material name="blue">
+        <color rgba="0 0 .8 1"/>
+    </material>
+    </visual>
+    <collision>
+      <geometry>
+      <box size="${length} ${width} ${height}"/>
+      </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+    <xacro:default_inertial mass="5"/>
+ </link>
+
+ <link name="right_front_wheel">
+    <visual>
+        <geometry>
+            <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+        </geometry>
+        <material name="black">
+            <color rgba="0 100 0 1"/>
+        </material>
+    </visual>
+    <collision>
+        <geometry>
+        <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+        </geometry>
+    </collision>
+    <xacro:default_inertial mass="2"/>
+  </link>
+
+  <joint name="right_front_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="right_front_wheel"/>
+    <origin rpy=" ${pi/2.0}  0  0"  xyz="${length/2-0.15} ${-width/2-0.025} -0.05"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="right_back_wheel">
+      <visual>
+          <geometry>
+              <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+          </geometry>
+          <material name="black">
+              <color rgba="0 100 0 1"/>
+          </material>
+      </visual>
+      <collision>
+          <geometry>
+              <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+          </geometry>
+          <origin  rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+    <xacro:default_inertial mass="2"/>
+  </link>
+
+  <joint name="right_back_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="right_back_wheel"/>
+      <origin rpy=" ${pi/2}  0  0"  xyz="${-length/2+0.15} ${-width/2-0.025} -0.05"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+ </joint>
+
+ <link name="left_front_wheel">
+     <visual>
+         <geometry>
+             <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+         </geometry>
+         <origin  rpy="0 0 0" xyz="0 0 0"/>
+         <material name="black">
+             <color rgba="0 100 0 1"/>
+         </material>
+     </visual>
+     <collision>
+         <geometry>
+             <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+         </geometry>
+     </collision>
+    <xacro:default_inertial mass="2"/>
+  </link>
+
+  <joint name="left_front_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="left_front_wheel"/>
+      <origin rpy=" ${pi/2}  0  0"  xyz="${length/2-0.15} ${width/2+0.025} -0.05"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="left_back_wheel">
+      <visual>
+          <geometry>
+              <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+          </geometry>
+          <origin  rpy="0 0 0" xyz="0 0 0"/>
+          <material name="black">
+              <color rgba="0 100 0 1"/>
+          </material>
+      </visual>
+      <collision>
+          <geometry>
+              <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+          </geometry>
+      </collision>
+    <xacro:default_inertial mass="2"/>
+  </link>
+
+  <joint name="left_back_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="left_back_wheel"/>
+      <origin rpy=" ${pi/2}  0  0"  xyz="${-length/2+0.15} ${width/2+0.025} -0.05"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="head">
+    <visual>
+      <geometry>
+        <box size=".1 .1 .1"/>
+      </geometry>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      <material name="white">
+          <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+      <box size=".1 .1 .1"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial mass="0.25"/>
+  </link>
+
+  <joint name="tobox" type="fixed">
+    <parent link="base_link"/>
+    <child link="head"/>
+    <origin xyz="${length/2-0.2} 0 0.1"/>
+  </joint>
+
+
+
+<transmission name="left_front_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="left_front_wheel_joint">
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="left_front_wheel_joint_motor">
+    <mechanicalReduction>50</mechanicalReduction>
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </actuator>
+</transmission>
+
+<transmission name="right_front_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="right_front_wheel_joint">
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="right_front_wheel_joint_motor">
+    <mechanicalReduction>50</mechanicalReduction>
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </actuator>
+</transmission>
+
+
+<!-- ros_control plugin -->
+<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/robot</robotNamespace>
+    </plugin>
+  </gazebo>
+</robot>

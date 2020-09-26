@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+	base
+	laser:hokuyo
+	IMU
+-->
+<robot name="roadrobotH_laser" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+	<xacro:include filename="$(find mygazebo)/gazebo/roadrobotH_laser_gazebo.xacro"/>
+  	<!-- <xacro:include filename="$(find mygazebo)/property/roadrobotH_common_property.xacro"/> -->
+  <xacro:property name="laserlength" value="0.1" />
+	<xacro:property name="laserwidth" value="0.1" />
+  <xacro:property name="laserhight" value="0.1" />
+  <xacro:property name="linkDisx" value="0.2" />
+  <xacro:property name="linkDisy" value="0.2" />
+
+  
+
+ <xacro:macro name="default_inertial" params="mass">
+    <inertial>
+      <mass value="${mass}" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>	
+ </xacro:macro>
+
+
+<!-- <xacro:macro name="roadrobot_laser" > -->
+  <link name="left_laser_link">
+    <visual>
+      <geometry>
+        <box size="${laserlength} ${laserwidth} ${laserhight}"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="${laserlength} ${laserwidth} ${laserhight}"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial mass="0.25"/>
+  </link>
+
+  <joint name="left_laser_link_joint" type="fixed">
+    <parent link="medium_link"/>
+    <child link="left_laser_link"/>
+    <!-- <origin rpy="0 0 0" xyz="${mediumlength/2-linkDisx} ${mediumwidth/2-linkDisy} ${hight/2+mediumheight/2}"/> -->
+    <origin rpy="0 0 0" xyz=" ${-(1.5/2-linkDisy)} ${1.8/2-linkDisx} ${laserhight/2+0.12/2}"/>
+  </joint>
+
+  <link name="right_laser_link">
+    <visual>
+      <geometry>
+        <box size="${laserlength} ${laserwidth} ${laserhight}"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="${laserlength} ${laserwidth} ${laserhight}"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial mass="0.25"/>
+  </link>
+
+  <joint name="right_laser_link_joint" type="fixed">
+    <parent link="medium_link"/>
+    <child link="right_laser_link"/>
+    <!-- <origin rpy="0 0 0" xyz="${mediumlength/2-linkDisx} ${-(mediumwidth/2-linkDisy)} ${hight/2+mediumheight/2}"/> -->
+        <origin rpy="0 0 0" xyz="${(1.5/2-linkDisy)} ${1.8/2-linkDisx}  ${laserhight/2+0.12/2}"/>
+  </joint>
+
+
+<!-- </xacro:macro > -->
+<roadrobotH_laser_sim/>
+</robot>

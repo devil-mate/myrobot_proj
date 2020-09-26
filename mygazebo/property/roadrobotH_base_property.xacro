@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<robot name="roadrobotH_base_property" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <xacro:property name="length" value="1.0" />
+    <xacro:property name="width" value="1.5" />
+    <xacro:property name="height" value="0.1" />
+    <xacro:property name="mediumlength" value="${length*1.1}" />
+    <xacro:property name="mediumwidth" value="${width*1.5}" />
+    <xacro:property name="mediumheight" value="${height*1.2}" />
+    <xacro:property name="legLen" value="${wheeldiam+legmediumdiam/4}" />
+    <xacro:property name="legdiam" value="0.1" />
+    <xacro:property name="legmediumlen" value="0.1" />
+    <xacro:property name="legmediumdiam" value="0.1" />
+    <xacro:property name="wheelLen" value="0.1" />
+    <xacro:property name="wheeldiam" value="0.3" />
+    <xacro:property name="jointgap" value="0.005" />
+    <xacro:property name="wheelJoinLimit_v" value="5000" />
+    <xacro:property name="wheelJoinLimit_T" value="1000" />
+    <!-- <xacro:property name="wheelJoinLimit_v" value="200" /> -->
+     <xacro:property name="robotBodymas" value="100" />
+      <xacro:property name="wheelmas" value="35" />
+
+    <xacro:property name="clength" value="0.02" />
+    <xacro:property name="radius" value="0.05" />
+    <xacro:property name="baselen" value="0.4" />
+    <xacro:property name="pi" value="3.1415926" />
+</robot>

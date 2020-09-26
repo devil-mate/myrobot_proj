@@ -1,0 +1,33 @@
+<launch> 
+	<arg name="paused" default="false"/>
+ 	<arg name="use_sim_time" default="true"/>
+ 	<arg name="gui" default="true"/>
+ 	<arg name="headless" default="false"/>
+  	<arg name="debug" default="false"/> 
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">    
+		<arg name="world_name" value="$(find turtlebot_gazebo)/worlds/playground.world"/> 
+    	<arg name="debug" value="$(arg debug)" />
+    	<arg name="gui" value="$(arg gui)" />
+    	<arg name="paused" value="$(arg paused)"/>
+    	<arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    	<arg name="headless" value="$(arg headless)"/>   
+	</include>
+	
+
+	<include file= "$(find mygazebo)/launch/include/myrobot.launch.xml">
+		<arg name="model" default="mycar_laser01.urdf.xacro"/>
+	</include>
+
+	<include file="$(find gmapping)/launch/rplidar_slam_gmapping.launch"/>
+
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find mygazebo)/rviz/gazebo_slam.rviz"/>
+	<!--node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen" 
+		launch-prefix="xterm -e"></node-->
+	<node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" 
+		launch-prefix="xterm -e"></node>
+</launch>
+
+

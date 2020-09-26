@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<!--
+  
+ -->
+<robot name="robotbase" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="width" value="0.2" />
+  <xacro:property name="leglen" value="0.6" />
+  <xacro:property name="polelen" value="0.2" />
+  <xacro:property name="bodylen" value="0.6" />
+  <xacro:property name="baselen" value="0.4" />
+  <xacro:property name="wheeldiam" value="0.04" />
+  <xacro:property name="pi" value="3.1415" />
+
+ <xacro:macro name="default_inertial" params="mass">
+    <inertial>
+      <mass value="${mass}" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>	
+ </xacro:macro>
+
+<link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.16 .25 .05"/>
+    </geometry>
+    <origin rpy="0 0 1.57075" xyz="0 0 0"/>
+    <material name="blue">
+        <color rgba="0 0 .8 1"/>
+    </material>
+    </visual>
+    <collision>
+      <geometry>
+      <box size="0.16 .25 .05"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial mass="10"/>
+ </link>
+
+ <link name="right_front_wheel">
+    <visual>
+      <geometry>
+        <cylinder length=".02" radius="0.025"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+      <cylinder length=".02" radius="0.025"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial mass="1"/>
+  </link>
+
+  <joint name="right_front_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="right_front_wheel"/>
+    <origin rpy="0 1.57075 0" xyz="0.08 0.1 -0.03"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="right_back_wheel">
+    <visual>
+      <geometry>
+        <cylinder length=".02" radius="0.025"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+      <cylinder length=".02" radius="0.025"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial mass="1"/>
+  </link>
+
+  <joint name="right_back_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="right_back_wheel"/>
+    <origin rpy="0 1.57075 0" xyz="0.08 -0.1 -0.03"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+ </joint>
+
+ <link name="left_front_wheel">
+    <visual>
+      <geometry>
+        <cylinder length=".02" radius="0.025"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+      <cylinder length=".02" radius="0.025"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial mass="1"/>
+  </link>
+
+  <joint name="left_front_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="left_front_wheel"/>
+    <origin rpy="0 1.57075 0" xyz="-0.08 0.1 -0.03"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="left_back_wheel">
+    <visual>
+      <geometry>
+        <cylinder length=".02" radius="0.025"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+      <cylinder length=".02" radius="0.025"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial mass="1"/>
+  </link>
+
+  <joint name="left_back_wheel_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="left_back_wheel"/>
+    <origin rpy="0 1.57075 0" xyz="-0.08 -0.1 -0.03"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+
+</robot>

@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!--
+	base
+	laser:hokuyo
+	IMU
+-->
+<robot name="smartcar_base" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+	<xacro:include filename="$(find mygazebo)/gazebo/mycar_base_gazebo.urdf.xacro"/>
+    <xacro:include filename="$(find mygazebo)/property/mycar_base_property.urdf.xacro"/>
+
+    
+    <xacro:macro name="default_inertial" params="mass">
+    <inertial>
+      <mass value="${mass}" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>
+    </xacro:macro>
+
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="${length} ${width} ${height}"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0 0 .8 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${length} ${width} ${height}"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </collision>
+        <xacro:default_inertial mass="5"/>
+    </link>
+
+    <link name="right_front_wheel">
+        <visual>
+            <geometry>
+                <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 100 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="2"/>
+    </link>
+
+    <joint name="right_front_wheel_joint" type="continuous">
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="right_front_wheel"/>
+        <origin rpy=" ${-pi/2.0}  0  0"  xyz="${length/2-0.15} ${-width/2-0.025} -0.05"/>
+        <limit effort="100" velocity="100"/>
+        <joint_properties damping="0.0" friction="0.0"/>
+    </joint>
+
+    <link name="right_back_wheel">
+        <visual>
+            <geometry>
+                <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 100 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+            </geometry>
+            <origin  rpy="0 0 0" xyz="0 0 0"/>
+        </collision>
+        <xacro:default_inertial mass="2"/>
+    </link>
+
+    <joint name="right_back_wheel_joint" type="continuous">
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="right_back_wheel"/>
+        <origin rpy=" ${pi/2}  0  0"  xyz="${-length/2+0.15} ${-width/2-0.025} -0.05"/>
+        <limit effort="100" velocity="100"/>
+        <joint_properties damping="0.0" friction="0.0"/>
+    </joint>
+
+    <link name="left_front_wheel">
+        <visual>
+            <geometry>
+                <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+            </geometry>
+            <origin  rpy="0 0 0" xyz="0 0 0"/>
+            <material name="black">
+                <color rgba="0 100 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="2"/>
+    </link>
+
+    <joint name="left_front_wheel_joint" type="continuous">
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="left_front_wheel"/>
+        <origin rpy=" ${-pi/2}  0  0"  xyz="${length/2-0.15} ${width/2+0.025} -0.05"/>
+        <limit effort="100" velocity="100"/>
+        <joint_properties damping="0.0" friction="0.0"/>
+    </joint>
+
+    <link name="left_back_wheel">
+        <visual>
+            <geometry>
+                <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+            </geometry>
+            <origin  rpy="0 0 0" xyz="0 0 0"/>
+            <material name="black">
+                <color rgba="0 100 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="${wheelLen}" radius="${wheeldiam}"/>
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="2"/>
+    </link>
+
+    <joint name="left_back_wheel_joint" type="continuous">
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="left_back_wheel"/>
+        <origin rpy=" ${pi/2}  0  0"  xyz="${-length/2+0.15} ${width/2+0.025} -0.05"/>
+        <limit effort="100" velocity="100"/>
+        <joint_properties damping="0.0" friction="0.0"/>
+    </joint>
+
+
+
+  <mycar_base_sim/>
+  <mycar_base_property/>
+</robot>

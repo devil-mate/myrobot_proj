@@ -1,0 +1,22 @@
+<package>
+  <name>myrobot_simulator</name>
+  <version>2.2.3</version>
+  <description>Catkin metapackage for the myrobot_simulator stack</description>
+  <maintainer email="myrobot@osrfoundation.com">OSRF</maintainer>
+  <license>BSD</license>
+  <url type="website">http://ros.org/wiki/myrobot_simulator</url>
+  <url type="repository">https://github.com/turtlebot/myrobot_simulator</url>
+  <url type="bugtracker">https://github.com/turtlebot/myrobot_simulator/issues</url>
+  <author email="myrobot@willowgarage.com">Willow</author>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>myrobot_gazebo</run_depend>
+  <run_depend>myrobot_navigation</run_depend>
+  <run_depend>mygazebo</run_depend>
+  <run_depend>myrobot_laser_slam</run_depend>
+
+
+  <export>
+    <metapackage/>
+  </export>
+</package>
