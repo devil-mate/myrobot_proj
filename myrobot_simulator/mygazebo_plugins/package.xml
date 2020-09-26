@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mygazebo_plugins</name>
+  <version>2.5.19</version>
+  <description>
+    Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components.
+  </description>
+
+  <maintainer email="robot@osrfoundation.org">Jose Luis Rivero</maintainer>
+
+  <license>BSD, Apache 2.0</license>
+
+  <url type="website">http://gazebosim.org/tutorials?cat=connect_ros</url>
+  <url type="bugtracker">https://github.com/ros-simulation/gazebo_ros_pkgs/issues</url>
+  <url type="repository">https://github.com/ros-simulation/gazebo_ros_pkgs</url>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>gazebo_dev</build_depend>
+  <!--
+    Need to use gazebo_dev since run script needs pkg-config
+    See: https://github.com/ros-simulation/gazebo_ros_pkgs/issues/323 for more info
+  -->
+  <depend>gazebo_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>nodelet</depend>
+  <depend>angles</depend>
+  <depend>nav_msgs</depend>
+  <depend>urdf</depend>
+  <depend>tf</depend>
+  <depend>tf2_ros</depend>
+  <depend>dynamic_reconfigure</depend>
+
+  <depend>rosconsole</depend>
+  
+
+  <depend>diagnostic_updater</depend>
+
+  <depend>std_msgs</depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>gazebo_dev</exec_depend>
+
+
+
+</package>
