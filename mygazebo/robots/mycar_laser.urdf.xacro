@@ -4,6 +4,7 @@
 	laser:hokuyo
 	IMU
 -->
+<!-- 直接写urdf模型，laser01.urdf由各个模块组合成机器人模型 -->
 <robot name="smartcar" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
 	<xacro:property name="width" value="0.2" />

@@ -16,8 +16,16 @@ myrobot_proj 的文件组织结构：
 
 
 
-myobot_simulator： 利用已有的源程序/包搭建应用。
+myrobot_simulator： 利用已有的源程序/包搭建应用。
 myrobot_apps: 自己实现各种包，slam，navigation
+{名字叫myrobot,因为启动不同的robot的话是通过mygazebo启动不同的机器人，然后myrobot包就负责处理数据以及控制}
+
+
+mygazebo包中包括 
+	urdf 各个模块的模型；
+	gazebo 模型需要的gazebo标签；
+	robots 各个部分组合成的机器人，由urdf 和gazebo组成；
+	launch 启动/加载到gazebo或者rviz中。
 	
 	
 

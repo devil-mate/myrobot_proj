@@ -24,11 +24,10 @@
   <!-- Load the URDF into the ROS Parameter Server -->
   <!-- 导入urdf文件，第一个参数修改为功能包名，第二个参数修改为urdf文件的路径 ，后面这两步区别与xacro文件-->
   <param name="mygazebo" command="cat '$(find mygazebo)/urdf/urdf_test.urdf'" />
-
-
+  <!-- <param name="mygazebo" command="cat '$(find mygazebo)/urdf/mytestrobot.urdf'" /> -->
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <!-- 导入spawn_urdf节点，使Gazebo能够识别urdf文件。需要修改的参数为功能包的路径，mytesturdf机器人重命名 -->
-  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param mygazebo -urdf -model mytesturdf" />
+  <node pkg="gazebo_ros" name="spawn_model"  type="spawn_model" args="-param mygazebo -urdf -model mytesturdf" />
 
 
 </launch>

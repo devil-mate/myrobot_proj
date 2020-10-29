@@ -24,8 +24,10 @@
 <!--	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>-->
 
 <!--	<node name="rviz" pkg="rviz" type="rviz" args="$(find mygazebo)/rviz/testrobot.rviz"/>-->
-	<node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py"
-		  launch-prefix="xterm -e"></node>
+<!-- launch-prefix="xterm -e" -->
+	<!-- <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py"
+		  ></node> -->
+		  
 
 </launch>
 

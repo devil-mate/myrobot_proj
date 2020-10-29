@@ -8,7 +8,6 @@
 	<xacro:include filename="$(find mygazebo)/gazebo/mycar_base_gazebo.urdf.xacro"/>
     <xacro:include filename="$(find mygazebo)/property/mycar_base_property.urdf.xacro"/>
 
-    
     <xacro:macro name="default_inertial" params="mass">
     <inertial>
       <mass value="${mass}" />

@@ -1,8 +1,8 @@
 <launch>
+<!-- 把xacro转换成urdf，然后把urdf转换成gazebo能识别的模型，也就是把urdf模型加载到gazebo中 -->
     <arg name="model"/>
-
     <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />   
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
         args="-unpause -urdf -model macroed -param robot_description -z 0.1"/>
 
 </launch>
