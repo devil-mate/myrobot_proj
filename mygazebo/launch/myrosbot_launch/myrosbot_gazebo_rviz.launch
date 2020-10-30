@@ -7,9 +7,11 @@
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
-
+  <arg name = "rvizConfig" />
+  <arg name = "mygWorld" />
+  
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find rosbot_gazebo)/worlds/turtlebot_playground.world"/>
+    <arg name="world_name" value="$(arg mygWorld)"/>
     <arg name="paused" value="$(arg paused)"/>
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
     <arg name="gui" value="$(arg gui)"/>
@@ -25,6 +27,6 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
-  <node name="rviz" pkg="rviz" type="rviz" args="$(find mygazebo)/rviz/rosbot.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizConfig)"/>
 
 </launch>
