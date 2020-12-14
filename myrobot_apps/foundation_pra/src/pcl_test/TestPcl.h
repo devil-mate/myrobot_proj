@@ -7,6 +7,7 @@
 #include <pcl/point_types.h>
 
 #include <pcl/filters/voxel_grid.h>
+#include <sensor_msgs/LaserScan.h>
 
 
 class TestPcl
@@ -24,6 +25,7 @@ private:
     ros::Subscriber scanSub_;
     void cloud_cb (const sensor_msgs::PointCloud2ConstPtr& input);
     void laserScanCb (const sensor_msgs::LaserScanConstPtr& laserScan);
+    
 };
 
 #endif
