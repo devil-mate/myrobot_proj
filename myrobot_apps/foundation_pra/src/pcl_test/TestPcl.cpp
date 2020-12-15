@@ -58,22 +58,29 @@ void TestPcl::laserScanCb (const sensor_msgs::LaserScanConstPtr& laserScan){
         laser_pointXYZ_.push_back(currentPoint);
 
     }
-    pcl::PCLPointCloud2 laser_pointCloud_;
-    // laser_pointCloud_.header.stamp = ros::Time::now();
-    //得到PCL中的点云数据 PCLPointCloud2
-    pcl::toPCLPointCloud2(laser_pointXYZ_,laser_pointCloud_);
-    // pcl::PCLPointCloud2ConstPtr cloudPtr(*laser_pointCloud_);
+    try{
 
-    // pcl::PCLPointCloud2 cloud_filtered; 
-    // pcl::VoxelGrid<pcl::PCLPointCloud2> sor;   //实例化滤波
-    // sor.setInputCloud (cloudPtr);     //设置输入的滤波
-    // sor.setLeafSize (0.02, 0.02, 0.02);   //设置体素网格的大小
-    // sor.filter (cloud_filtered);      //存储滤波后的点云 
-    //pcl_conversions::fromPCL(cloud_filtered, laserPoint2_output);
-    pcl_conversions::fromPCL(laser_pointCloud_, laserPoint2_output);
-    laserPoint2_output.header.frame_id = "laser";
-    scanPub_.publish(laserPoint2_output);
-    //TODO还差transform
+    
+        pcl::PCLPointCloud2 *laser_pointCloud_ =new pcl::PCLPointCloud2();
+        // laser_pointCloud_.header.stamp = ros::Time::now();
+        //得到PCL中的点云数据 PCLPointCloud2
+        pcl::toPCLPointCloud2(laser_pointXYZ_,*laser_pointCloud_);
+        pcl::PCLPointCloud2ConstPtr cloudPtr(laser_pointCloud_);
+
+        pcl::PCLPointCloud2 cloud_filtered; 
+        pcl::VoxelGrid<pcl::PCLPointCloud2> sor;   //实例化滤波
+        sor.setInputCloud (cloudPtr);     //设置输入的滤波
+        sor.setLeafSize (0.1, 0.1, 0.1);   //设置体素网格的大小
+        sor.filter (cloud_filtered);      //存储滤波后的点云 
+        pcl_conversions::fromPCL(cloud_filtered, laserPoint2_output);
+        // pcl_conversions::fromPCL(laser_pointCloud_, laserPoint2_output);
+        laserPoint2_output.header.frame_id = "laser";
+        scanPub_.publish(laserPoint2_output);
+    }
+    catch(...){
+        ROS_INFO_STREAM("error");
+    }
+    //TODO还差transform?--给个frame_id 
     // static tf::TransformListener listener;
     // static tf::StampedTransform transform;
     // listener.lookupTransform("/odom","/base_link",ros::Time(0), transform);
