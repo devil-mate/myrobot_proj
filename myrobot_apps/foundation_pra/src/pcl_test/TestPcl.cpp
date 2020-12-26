@@ -16,7 +16,7 @@ TestPcl::TestPcl(){
 TestPcl::~TestPcl(){
     
 }
- 
+
 void TestPcl::cloud_cb (const sensor_msgs::PointCloud2ConstPtr& input)
 {
 //   // Do data processing here...  
@@ -46,7 +46,8 @@ void TestPcl::laserScanCb (const sensor_msgs::LaserScanConstPtr& laserScan){
     //根据激光雷达数据转换成xy点，然后放到pcl点云中
     pcl::PointXYZ currentPoint;
     static pcl::PointCloud<pcl::PointXYZ> laser_pointXYZ_;
-    static sensor_msgs::PointCloud2 laserPoint2_output;
+    laser_pointXYZ_.clear();
+    sensor_msgs::PointCloud2 laserPoint2_output;
     double currentAngle;
 
     for(uint32_t i =0; i< laserScan->ranges.size();i++){
@@ -59,8 +60,6 @@ void TestPcl::laserScanCb (const sensor_msgs::LaserScanConstPtr& laserScan){
 
     }
     try{
-
-    
         pcl::PCLPointCloud2 *laser_pointCloud_ =new pcl::PCLPointCloud2();
         // laser_pointCloud_.header.stamp = ros::Time::now();
         //得到PCL中的点云数据 PCLPointCloud2
@@ -91,9 +90,12 @@ void TestPcl::laserScanCb (const sensor_msgs::LaserScanConstPtr& laserScan){
     // scanPub_.publish(outLaserScan);
     ROS_INFO_STREAM ("laserCloud out");
     
-
-    
 }
+
+void TestPcl::laser_filter(const pcl::PCLPointCloud2 &input, pcl::PCLPointCloud2 &filter_out){
+
+}
+
 int main(int argc, char** argv){
     try{
         ROS_INFO("hello !");

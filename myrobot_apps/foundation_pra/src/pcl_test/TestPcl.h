@@ -25,7 +25,10 @@ private:
     ros::Subscriber scanSub_;
     void cloud_cb (const sensor_msgs::PointCloud2ConstPtr& input);
     void laserScanCb (const sensor_msgs::LaserScanConstPtr& laserScan);
-    
+
+    void laser_filter(const pcl::PCLPointCloud2 &input, pcl::PCLPointCloud2 &filter_out);
+
+
 };
 
 #endif
