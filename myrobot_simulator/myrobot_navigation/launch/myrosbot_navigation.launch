@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+<arg name="mapName"  value ="$(find myrobot_navigation)/maps/testMap.yaml" />
+<include file ="$(find mygazebo)/launch/myrosbot_launch/myrosbot_gazebo_rviz.launch" >
+    <arg name ="rvizConfig"  value ="$(find mygazebo)/rviz/navigation.rviz"/>
+</include>
+
+<node name="map_server" pkg="map_server" type="map_server" args="$(arg mapName)">
+    <param name="frame_id" value="/map" />
+</node>
+  
+
+</launch>
