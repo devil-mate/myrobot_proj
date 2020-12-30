@@ -2,7 +2,7 @@
     <master auto="start"/>
     <arg name="mapName"  default ="$(find myrobot_navigation)/maps/testMap.yaml" />
     <arg name="map_file" default="$(find rosbot_navigation)/maps/test_map.yaml"/>
-    <node name="map_server" pkg="map_server" type="map_server" args="$(arg mapName)" /> 
+   <node name="map_server" pkg="map_server" type="map_server" args="$(arg mapName)" /> 
     <!-- <include file="$(find myrobot_navigation)/launch/myrosbot_navigation.launch"/> -->
     <!-- Run the map server -->
     <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(arg mapName)"> -->
@@ -25,16 +25,16 @@
   </node>
 
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-<!--        <rosparam file="$(find myrobot_navigation)/yaml/costmap_common_params.yaml" command="load" ns="global_costmap" />-->
-<!--        <rosparam file="$(find myrobot_navigation)/yaml/costmap_common_params.yaml" command="load" ns="local_costmap" />-->
-        <!-- <rosparam file="$(find myrobot_navigation)/yaml/local_costmap_params.yaml" command="load" />
+        <!-- <rosparam file="$(find myrobot_navigation)/yaml/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find myrobot_navigation)/yaml/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find myrobot_navigation)/yaml/local_costmap_params.yaml" command="load" />
         <rosparam file="$(find myrobot_navigation)/yaml/global_costmap_params.yaml" command="load" />
-        <rosparam file="$(find myrobot_navigation)/yaml/base_local_planner_params.yaml" command="load" /> -->
-        <rosparam file="$(find myrobot_navigation)/yaml/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find myrobot_navigation)/yaml/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find myrobot_navigation)/yaml/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find myrobot_navigation)/yaml/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find myrobot_navigation)/yaml/trajectory_planner.yaml" command="load" />
+        <rosparam file="$(find myrobot_navigation)/yaml/trajectory_planner.yaml" command="load" /> -->
+    <rosparam file="$(find rosbot_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find rosbot_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find rosbot_navigation)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find rosbot_navigation)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find rosbot_navigation)/config/trajectory_planner.yaml" command="load" />
 
     <remap from="cmd_vel" to="cmd_vel"/>
     <remap from="odom" to="odom"/>
