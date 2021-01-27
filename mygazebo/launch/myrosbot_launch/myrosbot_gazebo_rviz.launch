@@ -9,6 +9,8 @@
   <arg name="debug" default="false"/>
   <arg name = "rvizConfig"  default = "$(find mygazebo)/rviz/rosbot.rviz"/>
   <arg name = "mygWorld" default="$(find rosbot_gazebo)/worlds/turtlebot_playground.world"/>
+  <!-- <arg name = "mygWorld" default="$(find mygazebo)/worlds/house_2room.world"/> -->
+
   
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg mygWorld)"/>

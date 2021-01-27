@@ -4,7 +4,7 @@
 
 <include file ="$(find mygazebo)/launch/myrosbot_launch/myrosbot_gazebo_rviz.launch" >
     <arg name ="rvizConfig"  value ="$(find mygazebo)/rviz/navigation.rviz"/>
-    <arg name ="mygWorld"  value="$(find mygazebo)/worlds/caff_home.world"/>
+    <arg name ="mygWorld"  value="$(find mygazebo)/worlds/house_2room.world"/>
 </include>
 
   
