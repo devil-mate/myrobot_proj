@@ -8,7 +8,7 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
   <arg name = "rvizConfig"  default = "$(find mygazebo)/rviz/rosbot.rviz"/>
-  <arg name = "mygWorld" default="$(find rosbot_gazebo)/worlds/turtlebot_playground.world"/>
+  <arg name = "mygWorld" default=""/>
   <!-- <arg name = "mygWorld" default="$(find mygazebo)/worlds/house_2room.world"/> -->
 
   

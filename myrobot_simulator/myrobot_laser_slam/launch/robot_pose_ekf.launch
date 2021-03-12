@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <!-- <include file="$(find mygazebo)/launch/myrosbot_launch/myrosbot_gazebo_rviz.launch"> -->
+    <!-- <arg name="rvizConfig" value="$(find myrobot_laser_slam)/rviz/robot_test.rviz"/>
+    <arg name="mygWorld" value="$(find mygazebo)/worlds/house_2room.world"/> -->
+  <!-- </include> -->
+<node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+  <!-- <param name="output_frame" value="odom_combined"/>
+  <param name="base_footprint_frame" value="base_footprint"/>
+  <param name="freq" value="30.0"/>
+  <param name="sensor_timeout" value="1.0"/>  
+  <param name="odom_used" value="true"/>
+  <param name="imu_used" value="true"/>
+  <param name="vo_used" value="false"/> -->
+  <!-- <remap from="imu_data" to="imu" /> -->
+    <param name="output_frame" value="odom"/>
+  <param name="base_footprint_frame" value="base_link"/>
+  <param name="freq" value="30.0"/>
+  <param name="sensor_timeout" value="1.0"/>  
+  <param name="odom_used" value="true"/>
+  <param name="imu_used" value="true"/>
+  <param name="vo_used" value="false"/>
+</node>
+</launch>
