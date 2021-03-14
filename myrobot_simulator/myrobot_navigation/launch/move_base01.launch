@@ -3,7 +3,7 @@
     <arg name="mapName"  default ="$(find myrobot_navigation)/maps/slam_02room/slam_02room.yaml" />
     <!-- <arg name="map_file" default="$(find rosbot_navigation)/maps/test_map.yaml"/> -->
    <node name="map_server" pkg="map_server" type="map_server" args="$(arg mapName) " launch-prefix="xterm -e" > 
-        <param name="frame_id" value="map" />
+        <param name="frame_id" value= " map" />
    </node>
     <!-- <include file="$(find myrobot_navigation)/launch/myrosbot_navigation.launch"/> -->
     <!-- Run the map server -->
