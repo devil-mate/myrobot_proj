@@ -15,18 +15,18 @@ myrobot_proj 的文件组织结构：
 	b.navigation功能包集合的使用http://wiki.ros.org/cn/navigation/Tutorials/RobotSetup,也是一些launch文件及配置文件，因为源程序已有包。
 
 
+# 工程下各个文件夹说明
+ * **myrobot_simulator**： 利用已有的源程序/包搭建应用；只是启动文件（利用已有的功能包），没有具体的功能实现
 
-* myrobot_simulator： 利用已有的源程序/包搭建应用。
-* myrobot_apps: 自己实现各种包，slam，navigation{名字叫myrobot,因为启动不同的robot的话是通过mygazebo启动不同的机器人，然后myrobot包就负责处理数据以及控制}
-   * apps 文件夹下： fundation_pra 包作为练习/test ，减少myROS_Proj下的代码。
-   
-           
-
-mygazebo包中包括 
-	urdf 各个模块的模型；
+* **myrobot_apps**: 
+    * 只是一个文件夹，组织文件，和myrobot_simulator一样，自己实现各种包：如slam，navigation{名字叫myrobot,因为启动不同的robot的话是通过mygazebo启动不同的机器人，然后myrobot包就负责处理数据以及控制};
+    * fundation_pra 包作为练习/test ，减少myROS_Proj下的代码。
+    * myrobot_apps 下面实现自己的导航，slam功能等；其中，导航功能包作为功能包集合，下面有各种自己的全局/局部规划器。
+* **mygazebo**
+    包括 urdf 各个模块的模型；
 	gazebo 模型需要的gazebo标签；
 	robots 各个部分组合成的机器人，由urdf 和gazebo组成；
 	launch 启动/加载到gazebo或者rviz中。
-	
+
 	
 
