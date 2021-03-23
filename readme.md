@@ -19,6 +19,7 @@ myrobot_proj 的文件组织结构：
 * myrobot_simulator： 利用已有的源程序/包搭建应用。
 * myrobot_apps: 自己实现各种包，slam，navigation{名字叫myrobot,因为启动不同的robot的话是通过mygazebo启动不同的机器人，然后myrobot包就负责处理数据以及控制}
    * apps 文件夹下： fundation_pra 包作为练习/test ，减少myROS_Proj下的代码。
+* myrobot_apps 只作为一个文件夹组织文件，和myrobot_simulator一样，下面实现自己的导航，slam功能等；其中，导航功能包作为功能包集合，下面有各种自己的全局/局部规划器。
    
            
 
