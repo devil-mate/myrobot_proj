@@ -1,13 +1,14 @@
   base_frame:  base_link
   odom_frame:  odom
-  delta:  0.1
-  xmin:  -5
-  ymin:  -5
-  xmax:  5
-  ymax:  5
+  delta:  0.05
+  xmin:  -10
+  ymin:  -10
+  xmax:  10
+  ymax:  10
   maxUrange:  5
-  map_update_interval:  0.1
+  map_update_interval:  1.0
   linearUpdate:  0.05
   angularUpdate:  0.05
   temporalUpdate:  0.1
+  minimumScore: 5
   particles:  10
