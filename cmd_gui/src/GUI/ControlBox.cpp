@@ -174,7 +174,7 @@ void ControlBox::initControlWidget() {
 }
 
 void ControlBox::on_backMainButton_click() {
-    this->hide();
+    // this->hide();
 }
 void ControlBox::on_picLightSlider_ValueChanged(int){
     int sliderPos = picLightSlider_->value();

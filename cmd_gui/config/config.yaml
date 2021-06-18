@@ -3,7 +3,7 @@
 # picName: building.jpg
 
 autoSpeedMax: 2.0
-manualSpeedMax: 1.0
-omegaMax: 1.5
+manualSpeedMax: 0.7
+omegaMax: -2.7
 
 
