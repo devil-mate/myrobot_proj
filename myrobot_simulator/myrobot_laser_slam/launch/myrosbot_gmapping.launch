@@ -26,6 +26,4 @@
   <!-- launch-prefix="xterm -e"  launch-prefix="gnome-terminal -x"  "-e gdb args" -->
   <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" 
 		launch-prefix="xterm -e "></node>
-
-
 </launch>

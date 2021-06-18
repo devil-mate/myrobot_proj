@@ -1,0 +1,12 @@
+local_costmap:
+  update_frequency: 3 #局部地图更新频率
+  publish_frequency: 15 #发布频率（局部地图一般应该不发布）
+  transform_tolerance: 0.25  #tf转换最大延时
+  static_map: false # 是否为静态地图，局部地图一般为动态
+  rolling_window: true # 更新局部地图（与静态地图相反）
+  width: 3 #更新地图的x维长度
+  height: 3 #更新地图的y维长度
+  origin_x: -1.5
+  origin_y: -1.5
+  resolution: 0.01 #地图分辨率
+  inflation_radius: 0.30 #机器人与障碍物保持最小距离
