@@ -1,0 +1,19 @@
+<launch>
+    <arg name="paramyaml" value="$(find cmd_gui)/config/config.yaml"/>
+    
+    <!-- <param name="easylogPath" type="string" value="$(arg logPath)"/> -->
+    <rosparam file="$(arg paramyaml)" command="load"/>
+
+   <node pkg="cmd_gui"  name="gui_Node" type="gui_Node" output="screen"  >
+    <!-- <remap from = "cmd_vel" to = "cmd_vel_gui"/> -->
+   </node>
+
+   
+</launch>
+
+
+
+
+
+
+

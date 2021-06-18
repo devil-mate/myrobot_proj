@@ -1,0 +1,15 @@
+bool start
+bool mode
+int16 period
+float32 autoSpeed
+int8 cameraIndex
+float32 brightnessValue
+float32   exposureTime
+float32   gain
+bool triggerMode
+bool autoParamAdj
+
+
+
+---
+int8 cameraState
