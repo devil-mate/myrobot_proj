@@ -5,15 +5,11 @@
 	IMU
 -->
 <robot name="xiaoqiang_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro" >
-	<!-- <xacro:include filename="$(find mygazebo)/gazebo/mycar_base_gazebo.urdf.xacro"/>
-    <xacro:include filename="$(find mygazebo)/property/mycar_base_property.urdf.xacro"/> -->
+  <xacro:arg name="robot_namespace" default=""/>
 
-    <!-- <xacro:macro name="default_inertial" params="mass">
-    <inertial>
-      <mass value="${mass}" />
-      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
-    </inertial>
-    </xacro:macro> -->
+  <xacro:property name="cameraSize" value="0.05"/>
+  <xacro:property name="cameraMass" value="0.1"/>
+  <xacro:property name="namespace" value="$(arg robot_namespace)" />
 
   <link
     name="base_link">
