@@ -1,14 +1,18 @@
   base_frame:  base_link
-  odom_frame:  odom
-  delta:  0.05
-  xmin:  -10
+  odom_frame:  odom 
+  delta:  0.05 #地图分辨率
+  xmin:  -10  #地图初始大小
   ymin:  -10
   xmax:  10
   ymax:  10
-  maxUrange:  5
-  map_update_interval:  1.0
-  linearUpdate:  0.05
-  angularUpdate:  0.05
+  maxUrange:  2 # 探测最大可用范围，即光束能到达的范围。
+  maxRange:  25   #传感器最大范围。如果在传感器距离范围内没有障碍物应该在地图上显示为自由空间。 maxUrange < 真实传感器最大距离范围 <= maxRange.
+  map_update_interval:  1.0  #地图更新的一个间隔，两次scanmatch的间隔，地图更新也受scanmach的影响，如果scanmatch没有成功的话，是不会更新地图的.
+  linearUpdate:  0.05 # 机器人移动该距离进行scanmatch
+  angularUpdate:  0.05 #机器人旋转该角度进行scanmatch
   temporalUpdate:  0.1
-  minimumScore: 5
-  particles:  10
+  minimumScore: 5 # 很重要，判断scanmatch是否成功的阈值，过高的话会使scanmatch失败，从而影响地图更新速率
+  particles:  100 # 粒子数
+  sigma: 0.05 # endpoint匹配标准差
+  kernelSize: 1 #用于查找对应的kernel size
+  occ_thresh: 0.25 #栅格地图栅格值
