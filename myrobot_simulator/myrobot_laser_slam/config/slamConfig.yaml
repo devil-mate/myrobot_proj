@@ -1,14 +1,44 @@
-  base_frame:  base_link
-  odom_frame:  odom
-  delta:  0.05
-  xmin:  -10
-  ymin:  -10
-  xmax:  10
-  ymax:  10
-  maxUrange:  5
-  map_update_interval:  1.0
-  linearUpdate:  0.05
-  angularUpdate:  0.05
-  temporalUpdate:  0.1
-  minimumScore: 5
-  particles:  10
+  # base_frame:  base_link
+  # odom_frame:  odom
+  # delta:  0.05
+  # xmin:  -10
+  # ymin:  -10
+  # xmax:  10
+  # ymax:  10
+  # maxUrange:  5
+  # map_update_interval:  1.0
+  # linearUpdate:  0.05
+  # angularUpdate:  0.05
+  # temporalUpdate:  0.1
+  # minimumScore: 5
+  # particles:  10
+
+  map_udpate_interval: 0.5
+  maxUrange: 3.0
+  maxRange: 10
+  sigma: 0.1
+  kernelSize: 1
+  lstep: 0.15
+  astep: 0.15
+  iterations: 2
+  lsigma: 0.1
+  ogain: 3.0
+  lskip: 1
+  srr: 0.1
+  srt: 0.2
+  str: 0.1
+  stt: 0.2
+  linearUpdate: 0.4
+  angularUpdate: 0.5
+  temporalUpdate: 0.4
+  resampleThreshold: 0.5
+  particles: 5
+  xmin: -3.0
+  ymin: -3.0
+  xmax: 3.0
+  ymax: 3.0
+  delta: 0.02
+  llsamplerange: 0.01
+  llsamplestep: 0.05
+  lasamplerange: 0.05
+  lasamplestep: 0.05
