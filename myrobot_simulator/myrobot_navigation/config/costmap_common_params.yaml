@@ -1,13 +1,16 @@
-obstacle_range: 15.0
-raytrace_range: 16.5
-footprint: [[0.12, 0.14], [0.12, -0.14], [-0.12, -0.14], [-0.12, 0.14]] #机器人面积，多边形yn
-# inflation_radius: 0.55  #膨胀系数（规划的路径，距离障碍物0.55米）
+obstacle_range: 5.0 # 障碍物探测距离
+raytrace_range: 6.5 # 传感器最大探测距离
+footprint: [[0.12, 0.14], [0.12, -0.14], [-0.12, -0.14], [-0.12, 0.14]] #机器人非圆形，指定机器人轮廓
+# robot_radius: 000 #如果机器人为圆形，则指定机器人半径
 map_topic: /map
+# map_type：voxel #地图类型
+# inflation_radius: 0.2 #机器人与障碍物保持最小距离
+# max_obstacle_height: 0.6 # 最大障碍物高度
+# min_obstacle_height: 0.0 # 最小障碍物高度
 subscribe_to_updates: true
-observation_sources: laser_scan_sensor 
-# observation_sources: laser_scan_sensor point_cloud_sensor
+observation_sources: laser_scan_sensor #传感器源（和下面的名字一致）
+# 传感器坐标，数据类型，话题，标记和添加障碍物
 laser_scan_sensor: {sensor_frame: laser, data_type: LaserScan, topic: scan, marking: true, clearing: true}
-#point_cloud_sensor: {sensor_frame: frame_name, data_type: PointCloud, topic: topic_name, marking: true, clearing: true}
 global_frame: map
 robot_base_frame: base_link
 always_send_full_costmap: true

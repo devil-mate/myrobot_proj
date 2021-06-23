@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+GlobalPlanner:
+  allow_unknown: false
+  default_tolerance: 0.2
+  visualize_potential: false
+  use_dijkstra: true
+  use_quadratic: true
+  use_grid_path: false
+  old_navfn_behavior: false
+  lethal_cost: 253
+  neutral_cost: 50
+  cost_factor: 3.0
+  publish_potential: true
+  orientation_mode: 0
+  orientation_window_size: 1
+=======
 # 
 # GlobalPlanner:
 #  allow_unknown: false
@@ -14,3 +30,4 @@ GlobalPlanner:
  use_quadratic: false
  use_grid_path: false  #如果为true，沿着栅格边界创建路径。 否则，使用梯度下降的方法。
  old_navfn_behavior: false  #如果你想要global_planner准确反映navfn的行为，此项设置为true
+>>>>>>> bd132617b0ce61a7753c6d89cee640d787fc514e
