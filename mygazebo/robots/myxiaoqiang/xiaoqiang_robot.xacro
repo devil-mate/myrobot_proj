@@ -6,6 +6,7 @@
 -->
 <robot name="xiaoqiang_robot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
   <xacro:include filename="$(find xiaoqiang_udrf)/robots/xiaoqiang.urdf.xacro"/>
+  <!-- <xacro:include filename="$(find xiaoqiang_udrf)/robots/xiaoqiang_udrf.URDF"/> -->
   <xacro:include filename="$(find mygazebo)/gazebo/xiaoqiang.gazebo" />
   <!-- <xacro:include filename="$(find mygazebo)/urdf/mycar_laser.urdf.xacro"/> -->
 <!--  <xacro:include filename="$(find mygazebo)/urdf/mycar_kinect.urdf.xacro"/>-->
