@@ -1,0 +1,38 @@
+<launch>
+    <master auto="start"/>
+    <arg name="mapName"  default ="$(find myrobot_navigation)/maps/slam_02room/slam_02room.yaml" />
+    <!-- <arg name="map_file" default="$(find rosbot_navigation)/maps/test_map.yaml"/> -->
+   <node name="map_server" pkg="map_server" type="map_server" args="$(arg mapName) " launch-prefix="xterm -e" > 
+        <param name="frame_id" value= " map" />
+   </node>
+  <node pkg="gmapping" type="slam_gmapping" name='gmapping_node' output='log'>
+      <rosparam file="$(find myrobot_laser_slam)/config/slamConfig.yaml" command="load"/>
+  </node>
+    <!-- <node pkg="amcl" type="amcl" name="amcl" output="screen" launch-prefix="xterm -e">
+        <remap from="scan" to="/scan"/>
+        <param name="odom_frame_id" value="odom"/>
+        <param name="odom_model_type" value="diff-corrected"/>
+        <param name="base_frame_id" value="base_link"/>
+        <param name="update_min_d" value="0.05"/>
+        <param name="update_min_a" value="0.01"/>
+        <param name="min_particles" value="100"/>
+    </node> -->
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="log" >
+        <rosparam file="$(find myrobot_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find myrobot_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find myrobot_navigation)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find myrobot_navigation)/config/global_costmap_params.yaml" command="load" />
+        <!-- <rosparam file="$(find myrobot_navigation)/config/global_planner_params.yaml" command="load" /> -->
+        <rosparam file="$(find myrobot_navigation)/config/dwa_local_planner_params.yaml" command="load" />
+        <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+        <remap from="cmd_vel" to="cmd_vel"/>
+        <remap from="odom" to="odom"/>
+        <remap from="scan" to="/scan"/>
+        <!-- <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="3.0"/>
+        <param name="move_base/DWAPlannerROS/xy_goasl_tolerance" value="3.0"/> -->
+    </node>
+    <include file = "$(find mygazebo)/launch/myrosbot_launch/myrosbot_rviz.launch">
+        <arg name ="rvizConfig" value ="$(find myrobot_laser_slam)/rviz/nav_slam.rviz" />
+    </include>
+</launch>
