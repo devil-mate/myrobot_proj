@@ -1,10 +1,11 @@
 <launch>
     <master auto="start"/>
-    <arg name="mapName"  default ="$(find myrobot_navigation)/maps/slam_02room/slam_02room.yaml" />
+    <!-- <arg name="mapName"  default ="$(find myrobot_navigation)/maps/slam_02room/slam_02room.yaml" /> -->
+    <arg name="mapName"  default ="$(find myrobot_navigation)/maps/white.yaml" />
     <!-- <arg name="map_file" default="$(find rosbot_navigation)/maps/test_map.yaml"/> -->
-   <node name="map_server" pkg="map_server" type="map_server" args="$(arg mapName) " launch-prefix="xterm -e" > 
+   <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(arg mapName) " launch-prefix="xterm -e" > 
         <param name="frame_id" value= " map" />
-   </node>
+   </node> -->
   <node pkg="gmapping" type="slam_gmapping" name='gmapping_node' output='log'>
       <rosparam file="$(find myrobot_laser_slam)/config/slamConfig.yaml" command="load"/>
   </node>
@@ -26,6 +27,7 @@
         <!-- <rosparam file="$(find myrobot_navigation)/config/global_planner_params.yaml" command="load" /> -->
         <rosparam file="$(find myrobot_navigation)/config/dwa_local_planner_params.yaml" command="load" />
         <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
         <remap from="cmd_vel" to="cmd_vel"/>
         <remap from="odom" to="odom"/>
         <remap from="scan" to="/scan"/>

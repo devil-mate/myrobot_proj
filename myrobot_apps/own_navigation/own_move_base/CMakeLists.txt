@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(own_move_base)
-
+find_package(glog REQUIRED)
 find_package(catkin REQUIRED
     COMPONENTS
         actionlib
@@ -44,39 +44,43 @@ include_directories(
     include
     ${catkin_INCLUDE_DIRS}
     ${EIGEN3_INCLUDE_DIRS}
+    # ${glog_INCLUDE_DIRS}
+    /usr/local/lib
 )
-
+set(GLOG_LIB /usr/local/lib/libglog.so.0  /usr/local/lib/libglog.so)
+set(COMLIB ${catkin_LIBRARIES} ${GLOG_LIB})
 # move_base
-add_library(move_base
-  src/move_base.cpp
-)
-target_link_libraries(move_base
-    ${Boost_LIBRARIES}
-    ${catkin_LIBRARIES}
-    )
-add_dependencies(move_base ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_library(move_base
+#   src/move_base.cpp
+# )
+# target_link_libraries(move_base
+#     ${Boost_LIBRARIES}
+#     ${catkin_LIBRARIES}
+    
+#     )
+# add_dependencies(move_base ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 add_executable(move_base_node
   src/move_base_node.cpp
 )
 add_dependencies(move_base_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(move_base_node move_base)
-set_target_properties(move_base_node PROPERTIES OUTPUT_NAME move_base)
+target_link_libraries(move_base_node   ${COMLIB} )
+# set_target_properties(move_base_node PROPERTIES OUTPUT_NAME )
 
-install(
-    TARGETS
-        move_base_node
-    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+# install(
+#     TARGETS
+#         move_base_node
+#     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
 
-install(
-    TARGETS
-        move_base
-    DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-)
+# install(
+#     TARGETS
+#         move_base
+#     DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+# )
 
 ## Mark cpp header files for installation
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  FILES_MATCHING PATTERN "*.h"
-)
+# install(DIRECTORY include/${PROJECT_NAME}/
+#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#   FILES_MATCHING PATTERN "*.h"
+# )
