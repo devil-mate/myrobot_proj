@@ -1,42 +1,42 @@
 DWAPlannerROS:
 # Robot Configuration Parameters - stdr robot
-  max_vel_x: 0.55 # x方向最大线速度绝对值 m/s
+  max_vel_x: 5 # x方向最大线速度绝对值 m/s
   min_vel_x: 0.0  # x方向最小线速度绝对值 m/s
   # 因为是差速驱动机器人，所以y方向速度是0
-  max_vel_y: 0.1  # x方向最大线速度 m/s#diff drive robot,don't need set vel_y
-  min_vel_y: -0.1
+  max_vel_y: 0.0  # x方向最大线速度 m/s#diff drive robot,don't need set vel_y
+  min_vel_y: 0
   #机器人最大最小平移速度绝对值，m/s {和线速度区别？}
-  max_trans_vel: 0.55 #choose slightly less than the base's capability
+  max_trans_vel: 5 #choose slightly less than the base's capability
   # 注意不要将min_trans_vel设置为0，否则DWA认为平移速度不可忽略，将创建较小的旋转速度。
   min_trans_vel: 0.1 #this is the min trans velocity when there is negligible rotational velocity 
   #机器人被认属于“停止”状态时的平移速度。如果机器人的速度低于该值，则认为机器人已停止。单位为 m/s
   trans_stopped_vel: 0.05
   #机器人的最大/最小旋转角速度的绝对值，单位为 rad/s 
-  max_rot_vel: 1  #choose slightly less than the base's capability
+  max_rot_vel: 5  #choose slightly less than the base's capability
   min_rot_vel: 0.1  #this is the min angular velocity when there is negligible translational velocity
   rot_stopped_vel: 0.1  #机器人被认属于“停止”状态时的旋转速度。单位为 rad/s
   # 机器人在x y 和旋转方向的极限加速度，单位为 meters/sec^2
-  acc_lim_x: 2.5 
-  acc_lim_y: 2.5 # diff drive robot 差分机器人为0
-  acc_lim_th: 3.2
+  acc_lim_x: 10
+  acc_lim_y: 0 # diff drive robot 差分机器人为0
+  acc_lim_th: 10
 
 # Goal Tolerance Parameters
   #达到目标点的容差，角度单位是弧度，xy方向单位是米 
-  yaw_goal_tolerance: 0.1  # 0.1 rad = 5.7 degree
+  yaw_goal_tolerance: 3  # 0.1 rad = 5.7 degree
   xy_goal_tolerance: 0.1
   # 设置为true时表示：如果到达容错距离内,机器人就会原地旋转；即使转动是会跑出容错距离外
   latch_xy_goal_tolerance: false 
 # Forward Simulation Parameters 前向模拟参数
-  sim_time: 4.0    # 1.7 前向模拟轨迹的时间，单位s
+  sim_time: 7.0    # 1.7 前向模拟轨迹的时间，单位s
   sim_granularity: 0.025
-  vx_samples: 3    # x方向速度空间的采样点数.
-  vy_samples: 10    # y方向速度空间采样点数.。Tutulebot为差分驱动机器人，所以y方向永远只有1个值（0.0）
+  vx_samples: 20    # x方向速度空间的采样点数.
+  vy_samples: 1    # y方向速度空间采样点数.。Tutulebot为差分驱动机器人，所以y方向永远只有1个值（0.0）
   vth_samples: 20  # 20旋转方向的速度空间采样点数
   controller_frequency: 20.0 
 # Trajectory Scoring Parameters 轨迹评分参数
   path_distance_bias: 32.0      # 32.0控制器与给定路径接近程度的权重
   goal_distance_bias: 24.0      # 24.0#控制器与局部目标点的接近程度的权重，也用于速度控制
-  occdist_scale: 0.01           # 0.01 控制器躲避障碍物的程度
+  occdist_scale: 1           # 0.01 控制器躲避障碍物的程度
   forward_point_distance: 0.325 # 0.325 以机器人为中心，额外放置一个计分点的距离
   stop_time_buffer: 0.2         # 0.2 #机器人在碰撞发生前必须拥有的最少时间量。该时间内所采用的轨迹仍视为有效。即：为防止碰撞,机器人必须提前停止的时间长度
   scaling_speed: 0.25          # 0.25 #开始缩放机器人足迹时的速度的绝对值，单位为m/s。

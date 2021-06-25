@@ -20,7 +20,7 @@
   
   
     <!-- 加载机器人模型描述参数 -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find rosbot_description)/urdf/rosbot.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find rosbot_description)/urdf/myrosbot.xacro'"/>
   <!-- gazebo中模型 -->
   <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model rosbot" />
   
