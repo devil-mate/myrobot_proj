@@ -5,6 +5,7 @@
   <!-- Map server -->
   <arg name="map_file" default="$(find rosbot_navigation)/maps/test_map.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  <!-- gmapping -->
     <include file="$(find rosbot_description)/launch/gmapping.launch"></include>
 
 

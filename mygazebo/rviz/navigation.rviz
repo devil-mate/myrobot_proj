@@ -11,15 +11,9 @@ Panels:
         - /Image1
         - /Path1
         - /Path2
-<<<<<<< HEAD
-        - /Path3
-      Splitter Ratio: 0.5
-    Tree Height: 518
-=======
         - /Path4
       Splitter Ratio: 0.5
     Tree Height: 481
->>>>>>> bd132617b0ce61a7753c6d89cee640d787fc514e
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
