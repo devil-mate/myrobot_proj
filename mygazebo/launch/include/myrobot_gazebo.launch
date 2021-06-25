@@ -1,0 +1,16 @@
+<launch>
+<!-- 加载机器人模型描述参数 -->
+<!-- 把xacro转换成urdf，然后把urdf转换成gazebo能识别的模型，也就是把urdf模型加载到gazebo中 -->
+    <arg name="modelName"/>
+    <param name="robot_description" command="$(find xacro)/xacro.py $(arg modelName)" />   
+
+    <!-- gazebo中模型, 如果只是在rviz中显示不需要 -->
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model $(arg modelName)" />
+    <!-- <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description" /> -->
+
+    <rosparam command="load" file="$(find joint_state_controller)/joint_state_controller.yaml" />
+    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>  -->
+    <node name="joint_state_controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="joint_state_controller" /> 
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+</launch>

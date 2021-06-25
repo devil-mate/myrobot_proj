@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+<!-- world -->
+  <include file="$(find mygazebo)/launch/include/empty_world.launch">
+    <arg name="mygWorld" value="$(find mygazebo)/worlds/house_2room.world"/>
+  </include>
+
+<!-- my robot -->
+  <include file = "$(find mygazebo )/launch/include/myrobot_gazebo.launch">
+    <!-- <arg name="modelName" value="$(find rosbot_description)/urdf/myrosbot.xacro"/>  -->
+    <arg name="modelName" value="$(find mygazebo)/robots/xiaoqiang_robot.xacro"/> 
+  </include>
+  
+  
+
+
+</launch>
