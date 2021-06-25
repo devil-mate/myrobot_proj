@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-
+<!-- 仿真只需要使用这一个文件，每次需要加载不同的world和robot时，在这个文件中更改参数 -->
+<!-- <arg name="modelName" default="$(find rosbot_description)/urdf/myrosbot.xacro"/> --> <!--不需要默认参数，必须传入参数-->
 <!-- world -->
   <include file="$(find mygazebo)/launch/include/empty_world.launch">
     <arg name="mygWorld" value="$(find mygazebo)/worlds/house_2room.world"/>
@@ -8,8 +9,16 @@
 
 <!-- my robot -->
   <include file = "$(find mygazebo )/launch/include/myrobot_gazebo.launch">
+    <!-- myrosbot 两轮差动rosbot -->
     <!-- <arg name="modelName" value="$(find rosbot_description)/urdf/myrosbot.xacro"/>  -->
-    <arg name="modelName" value="$(find mygazebo)/robots/xiaoqiang_robot.xacro"/> 
+    <!-- 原 rosbot -->
+    <arg name="modelName" value="$(find rosbot_description)/urdf/rosbot.xacro"/> 
+    <!-- <arg name="modelName" value="$(find mygazebo)/robots/myxiaoqiang/xiaoqiang_robot.xacro"/>  -->
+    <!-- <arg name="modelName" value="$(find mygazebo)/robots/roadrobotH.urdf.xacro"/> -->
+    <!-- <arg name="modelName" value="$(find mygazebo)/robots/mycar_laser01.urdf.xacro"/> -->
+    <!-- <arg name="modelName" value="$(find mygazebo)/robots/kobuki_hexagons_kinect.urdf.xacro"/> -->
+    <!-- <arg name="modelName" value="$(find mygazebo)/robots/mycar_laser.urdf.xacro"/> -->
+
   </include>
   
   
