@@ -3,7 +3,7 @@
 
 
 
-  <include file="$(find rosbot_gazebo)/launch/rosbot_world.launch"></include>
+  <include file="$(find mygazebo)/launch/myrosbot_launch/myTest_world.launch"></include>
     <include file="$(find rosbot_description)/launch/rosbot_gazebo.launch"></include>
 
 </launch>
