@@ -12,9 +12,9 @@
 #include "std_msgs/Float32.h"
 #include "std_msgs/Float32MultiArray.h"
 #include "sensor_msgs/Image.h"
-#include "pabi_gui/ControlBoxMsg.h"
+#include "cmd_gui/ControlBoxMsg.h"
 #include "geometry_msgs/Twist.h"
-#include "pabi_gui/ParamSet.h"
+#include "cmd_gui/ParamSet.h"
 //多线程--条件变量
 #include <thread>
 #include <condition_variable>
@@ -46,9 +46,9 @@ private:
     double freq_;
     std::thread *gui_Thread;
     std_msgs::Float32 Msg_count_;
-    pabi_gui::ControlBoxMsg controlBoxMsg_;
+    cmd_gui::ControlBoxMsg controlBoxMsg_;
     geometry_msgs::Twist twistMsg_;
-    //pabi_gui::ParamSet paramMsg_;
+    //cmd_gui::ParamSet paramMsg_;
     std_msgs::Float32MultiArray paramMsg_;
 
     ros::Timer pubTimer;

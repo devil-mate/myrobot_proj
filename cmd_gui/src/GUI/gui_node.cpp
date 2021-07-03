@@ -19,7 +19,7 @@ gui_node::gui_node():freq_(20.0),mainWindow(NULL),manualSpeedMax_(10),autoSpeedM
     //mainWindow指针赋初值,可用于之后判断指针是否指向需要的内存（new）,这种方式不行？
     dynParam_Publisher =n.advertise<std_msgs::Float32MultiArray>("param_set",10);
     // dynParam_Publisher =n.advertise<pabi_gui::ParamSet>("param_set",10);
-    cmdPublisher = n.advertise<pabi_gui::ControlBoxMsg>("cmd_gui",10);
+    cmdPublisher = n.advertise<cmd_gui::ControlBoxMsg>("cmd_gui",10);
     cmd_vel_Publisher = n.advertise<geometry_msgs::Twist>("cmd_vel",5);
     pubTimer = n.createTimer(ros::Duration(1.0/std::max(freq_,1.0)),&gui_node::sendCmdTick,this);
 //     imgSubscriber = n.subscribe<sensor_msgs::Image>("imgTopic",1,&gui_node::imageSubCallback,this);
