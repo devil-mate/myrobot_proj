@@ -4,11 +4,16 @@
   <arg name="y_pos" default="-0.5"/>
   <arg name="z_pos" default="0.0"/>
 
+  <arg name="gps_latitude" default="39.5080331"/>
+	<arg name="gps_longitude" default="-0.4619816"/>
+
   <arg name="rvizConfig" default=" $(find xrobot_description)/rviz/model.rviz" />
   <!-- 更改机器人模型和世界模型，其中机器人模型包括了gazebo插件以及标签 -->
-  <arg name="urdf_file" default="$(find xrobot_description)/urdf/turtlebot3_$(arg model).urdf.xacro"/>
+  <!-- <arg name="urdf_file" default="$(find xrobot_description)/urdf/turtlebot3_$(arg model).urdf.xacro"/> -->
+  <arg name="urdf_file" default="$(find xrobot_description_summit_xl)/robots/summit_xl_std.urdf.xacro"/>
   <!-- <arg name="worldName" default="$(find mygazebo)/worlds/house_2room.world"/> -->
-  <arg name="worldName" default="$(find turtlebot3_gazebo)/worlds/turtlebot3_world.world"/>
+  <!-- <arg name="worldName" default="$(find turtlebot3_gazebo)/worlds/turtlebot3_world.world"/> -->
+  <arg name="worldName" default="$(find turtlebot3_gazebo)/worlds/empty_world.world"/>
 
 
 
@@ -16,6 +21,8 @@
   <include file="$(find xrobot_bringup)/launch/xrobot_model.launch">
     <arg name="urdf_file" value="$(arg urdf_file)"/>
     <arg name="rvizConfig" value="$(arg rvizConfig)"/>
+        <arg name="gps_latitude" default="$(arg gps_latitude)"/>
+	  <arg name="gps_longitude" default="$(arg gps_longitude)"/>
   </include>
   <!-- 加载世界模型，以及把机器人模型解析成gazebo可显示模型 spawn_model-->
   <include file="$(find xrobot_gazebo)/launch/xrobot_empty_world.launch">
@@ -23,6 +30,8 @@
     <arg name="x_pos" default="$(arg x_pos)"/>
     <arg name="y_pos" default="$(arg y_pos)"/>
     <arg name="z_pos" default="$(arg z_pos)"/>
+    <arg name="urdf_file" value="$(arg urdf_file)"/>
+
   </include>
 
   

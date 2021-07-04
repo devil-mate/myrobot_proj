@@ -4,9 +4,15 @@
   <arg name="urdf_file" default=" $(find xrobot_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
   <arg name="rvizConfig" default=" $(find xrobot_description)/rviz/model.rviz" />
   
+    	<arg name="gps_latitude" default="39.5080331"/>
+	<arg name="gps_longitude" default="-0.4619816"/>
+
   <include file="$(find xrobot_bringup)/launch/includes/xrobot_remote.launch">
-    <arg name="model" value="$(arg model)" />
+    <!-- <arg name="model" value="$(arg model)" /> -->
+    <arg name="urdf_file" value="$(arg urdf_file)"/>
     <arg name="multi_robot_name" value="$(arg multi_robot_name)"/>
+            <arg name="gps_latitude" default="$(arg gps_latitude)"/>
+	  <arg name="gps_longitude" default="$(arg gps_longitude)"/>
   </include>
 
   <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
