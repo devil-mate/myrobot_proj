@@ -12,11 +12,12 @@
     <!-- myrosbot 两轮差动rosbot -->
     <!-- <arg name="modelName" value="$(find rosbot_description)/urdf/myrosbot.xacro"/>  -->
     <!-- 原 rosbot -->
-    <arg name="modelName" value="$(find rosbot_description)/urdf/rosbot.xacro"/> 
+    <!-- <arg name="modelName" value="$(find rosbot_description)/urdf/rosbot.xacro"/>  -->
     <!-- <arg name="modelName" value="$(find mygazebo)/robots/myxiaoqiang/xiaoqiang_robot.xacro"/>  -->
     <!-- <arg name="modelName" value="$(find mygazebo)/robots/roadrobotH.urdf.xacro"/> -->
     <!-- <arg name="modelName" value="$(find mygazebo)/robots/mycar_laser01.urdf.xacro"/> -->
-    <!-- <arg name="modelName" value="$(find mygazebo)/robots/kobuki_hexagons_kinect.urdf.xacro"/> -->
+    <!-- turtlebot 3 -->
+    <arg name="modelName" value="$(find mygazebo)/robots/kobuki_hexagons_kinect.urdf.xacro"/>
     <!-- <arg name="modelName" value="$(find mygazebo)/robots/mycar_laser.urdf.xacro"/> -->
 
   </include>

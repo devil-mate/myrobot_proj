@@ -5,7 +5,7 @@
     <rosparam file="$(arg paramyaml)" command="load"/>
 
    <node pkg="cmd_gui"  name="gui_Node" type="gui_Node" output="screen"  >
-    <remap from = "cmd_vel" to = "/robot/robotnik_base_control/cmd_vel"/>
+    <!-- <remap from = "cmd_vel" to = "/robot/robotnik_base_control/cmd_vel"/> -->
    </node>
 
    
