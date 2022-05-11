@@ -1,31 +1,45 @@
 
 
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
-)
+# find_package(catkin REQUIRED COMPONENTS
+#   roscpp
+#   rospy
+#   std_msgs
+# )
 
 # find_package(Boost REQUIRED COMPONENTS system)
+
+# find_package(PCL REQUIRED COMPONENTS common io)
+
+
 
 ###########
 ## Build ##
 ###########
 
+
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
+
+
+
+
+aux_source_directory(${PROJECT_SOURCE_DIR}/src LIBSRC)
+add_library(PclLib ${LIBSRC} )
+# add_library(PclLib PclOps.cpp)
+target_link_libraries(PclLib ${PCL_LIBRARIES})
+
+
 
 ## Declare a C++ library
-aux_source_directory(${PROJECT_SOURCE_DIR}/src LIBSRC)
+# aux_source_directory(${PROJECT_SOURCE_DIR}/src LIBSRC)
 
-add_library(PclLib ${LIBSRC})
-# add_library(PclLib PclOps.cpp)
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
+
+# add_library(PclLib ${LIBSRC})
+# # add_library(PclLib PclOps.cpp)
+# target_link_libraries(PclLib ${PCL_LIBRARIES}
+# )
+# target_link_libraries(PclLib
+#   ${catkin_LIBRARIES} ${PCL_LIBRARIES}
 # )
 
 #  add ros node exe

@@ -2,16 +2,30 @@ cmake_minimum_required(VERSION 3.0.2)
 project(pra_)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++14)
+find_package(PCL 1.8.1 REQUIRED COMPONENTS common io )
+
+link_directories(${PCL_INCLUDE_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+message("--------------------pcl dir: " ${PCL_LIBRARY_DIRS})
+message("--------------------pcl include  dir: " ${PCL_INCLUDE_DIRS})
+
+
+include_directories(
+  include
+  # ${PCL_IO_INCLUDE_DIR}
+  ${PCL_INCLUDE_DIRS}
+)
+
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
-)
+# find_package(catkin REQUIRED COMPONENTS
+#   roscpp
+#   rospy
+#   std_msgs
+# )
 
 
 ## System dependencies are found with CMake's conventions
@@ -103,12 +117,12 @@ find_package(catkin REQUIRED COMPONENTS
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES pra_
-#  CATKIN_DEPENDS roscpp rospy std_msgs
-#  DEPENDS system_lib
-)
+# catkin_package(
+# #  INCLUDE_DIRS include
+# #  LIBRARIES pra_
+# #  CATKIN_DEPENDS roscpp rospy std_msgs
+# #  DEPENDS system_lib
+# )
 
 ###########
 ## Build ##
@@ -116,10 +130,10 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
+# include_directories(
+# # include
+#   ${catkin_INCLUDE_DIRS}
+# )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
