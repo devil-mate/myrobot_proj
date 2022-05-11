@@ -6,7 +6,7 @@
 #   std_msgs
 # )
 
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS system)
 
 # find_package(PCL REQUIRED COMPONENTS common io)
 
@@ -19,28 +19,31 @@
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+# TODO 怎么放到子cmakelists中，其他平级的cmakelists也可以使用这个库头文件
+# find_package(PCL 1.8.1 REQUIRED COMPONENTS common io )
+
+link_directories(${PCL_INCLUDE_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+include_directories(
+  include
+  ${PCL_INCLUDE_DIRS}
+)
 
 
-
-
-aux_source_directory(${PROJECT_SOURCE_DIR}/src LIBSRC)
-add_library(PclLib ${LIBSRC} )
-# add_library(PclLib PclOps.cpp)
-target_link_libraries(PclLib ${PCL_LIBRARIES})
 
 
 
 ## Declare a C++ library
-# aux_source_directory(${PROJECT_SOURCE_DIR}/src LIBSRC)
 
 
-# add_library(PclLib ${LIBSRC})
-# # add_library(PclLib PclOps.cpp)
-# target_link_libraries(PclLib ${PCL_LIBRARIES}
-# )
-# target_link_libraries(PclLib
-#   ${catkin_LIBRARIES} ${PCL_LIBRARIES}
-# )
+aux_source_directory(${PROJECT_SOURCE_DIR}/src LIBSRC)
+
+add_library(PclLib ${LIBSRC} )
+
+target_link_libraries(PclLib
+  ${catkin_LIBRARIES} ${PCL_LIBRARIES}
+)
 
 #  add ros node exe
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

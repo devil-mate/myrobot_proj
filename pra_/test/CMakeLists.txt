@@ -6,6 +6,7 @@
 ## Build ##
 ###########
 
+
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
@@ -14,6 +15,8 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/src
   ${PROJECT_SOURCE_DIR}/src/rosNode
 )
+message("--------------------pcl dir: " ${PCL_LIBRARY_DIRS})
+message("--------------------pcl include  dir: " ${PCL_INCLUDE_DIRS})
 # message("===========1" ${PROJECT_SOURCE_DIR})
 # message("===========2" ${CMAKE_SOURCE_DIR})
 # message("===========3" ${CMAKE_CURRENT_SOURCE_DIR})
@@ -23,8 +26,8 @@ set(OWN_LIB
     PclLib
   )
 add_executable(test_node testMain.cpp)
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-## Specify libraries to link a library or executable target against
+# # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# ## Specify libraries to link a library or executable target against
 target_link_libraries(test_node
   ${catkin_LIBRARIES} ${OWN_LIB}
 )

@@ -3,29 +3,18 @@ project(pra_)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++14)
-find_package(PCL 1.8.1 REQUIRED COMPONENTS common io )
 
-link_directories(${PCL_INCLUDE_DIRS})
-add_definitions(${PCL_DEFINITIONS})
-message("--------------------pcl dir: " ${PCL_LIBRARY_DIRS})
-message("--------------------pcl include  dir: " ${PCL_INCLUDE_DIRS})
-
-
-include_directories(
-  include
-  # ${PCL_IO_INCLUDE_DIR}
-  ${PCL_INCLUDE_DIRS}
-)
+find_package(PCL 1.8.1 REQUIRED COMPONENTS common io visualization )
 
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-# find_package(catkin REQUIRED COMPONENTS
-#   roscpp
-#   rospy
-#   std_msgs
-# )
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+)
 
 
 ## System dependencies are found with CMake's conventions
@@ -130,10 +119,12 @@ include_directories(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-# include_directories(
-# # include
-#   ${catkin_INCLUDE_DIRS}
-# )
+include_directories(
+  include
+  ${catkin_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS}
+  
+)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
