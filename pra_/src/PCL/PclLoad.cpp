@@ -9,9 +9,10 @@ void viewerOneOff(pcl::visualization::PCLVisualizer& viewer)
 
 void print(){
     printf("this is a pclOpas---\n");
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud1(new  pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud1(new  pcl::PointCloud<pcl::PointXYZI>);
+    // pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud1(new  pcl::PointCloud<pcl::PointXYZRGB>);
     int8_t res=pcl::io::loadPCDFile("/home/zj/share_sdb5/tempData/DataSave/testLoam_pcd/1422133392.537796096.pcd", *cloud1); //加载点云文件  
-    printf("load pcd res: \n",res);
+    // printf("load pcd res:%d \n",res);
     if(res==-1){
         printf("load pcd error\n");
     }

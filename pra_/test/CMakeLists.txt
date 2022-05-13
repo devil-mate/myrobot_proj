@@ -13,7 +13,10 @@ include_directories(
   include
   ${catkin_INCLUDE_DIRS}
   ${PROJECT_SOURCE_DIR}/src
+  ${PROJECT_SOURCE_DIR}/src/*
   ${PROJECT_SOURCE_DIR}/src/rosNode
+  ${PROJECT_SOURCE_DIR}/src/otherPra
+
 )
 message("--------------------pcl dir: " ${PCL_LIBRARY_DIRS})
 message("--------------------pcl include  dir: " ${PCL_INCLUDE_DIRS})
@@ -23,7 +26,8 @@ message("--------------------pcl include  dir: " ${PCL_INCLUDE_DIRS})
 
 
 set(OWN_LIB 
-    PclLib
+    # PclLib
+    OtherPra
   )
 add_executable(test_node testMain.cpp)
 # # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

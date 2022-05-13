@@ -37,13 +37,17 @@ include_directories(
 ## Declare a C++ library
 
 
-aux_source_directory(${PROJECT_SOURCE_DIR}/src LIBSRC)
-
-add_library(PclLib ${LIBSRC} )
-
-target_link_libraries(PclLib
-  ${catkin_LIBRARIES} ${PCL_LIBRARIES}
+aux_source_directory(${PROJECT_SOURCE_DIR}/src/otherPra otherPra_SRC)
+add_library(OtherPra ${otherPra_SRC} )
+target_link_libraries(OtherPra
+  ${catkin_LIBRARIES} 
 )
+
+# aux_source_directory(${PROJECT_SOURCE_DIR}/src/PCL PCL_SRC)
+# add_library(PclLib ${PCL_SRC} )
+# target_link_libraries(PclLib
+#   ${catkin_LIBRARIES} ${PCL_LIBRARIES}
+# )
 
 #  add ros node exe
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
