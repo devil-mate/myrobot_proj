@@ -1,5 +1,5 @@
 /**
- * @file other.cpp 一些基础语法/临时功能验证测试等
+ * @file OtherPra.cpp 一些基础语法/临时功能验证测试等
  * @author your name (you@domain.com)
  * @brief 
  * @version 0.1
@@ -10,7 +10,10 @@
  */
 
 #include <stdio.h>
+#include <memory.h>
 #include <map>
+
+#include "OtherPra.h"
 uint8_t MAC_ADDR_ARR1[]={0x2F,0xA1,0xB5,0x0D,0x00,0x4B,0x12,0x00}; 
 uint8_t MAC_ADDR_ARR2[]={0xAF,0x61,0x97,0x0E,0x00,0x4B,0x12,0x00};
 uint8_t MAC_ADDR_ARR3[]={0xE8,0x12,0xAF,0x12,0x00,0x4B,0x12,0x00};
@@ -39,6 +42,9 @@ void printMap(std::map<uint8_t*,uint16_t > &map){
     printf("\n");
 }
 
+void  testMap2(){
+
+}
 void  testMap(){
     uint16_t shortAddr=0x1223;
     idMap_.insert(std::make_pair(MAC_ADDR_ARR1,shortAddr));
@@ -56,4 +62,39 @@ void  testMap(){
     // (idMap_.at(MAC_ADDR_ARR1).first);
     
 
+}
+// TestClass::TestClass(){
+//     int();
+// }
+TestClass::TestClass():array_({0,1,2}){
+    int();
+}
+TestClass::TestClass(TestClass &src){
+    int();
+}
+void TestClass::init(){
+    // 这里初始化没有作用,需要初始化列表进行初始化?
+    // memset(&array_[0],0,sizeof(array_));
+    // array_[1]=20;
+    // 怎么让一个智能指针指向已经存在的指针?
+    // array_=arrPtr_.get();
+    arrPtr_ = std::unique_ptr<uint8_t[]>((uint8_t*)array_);
+    arrSharedPtr_ = std::shared_ptr<uint8_t>((uint8_t*)array_);
+
+}
+void TestClass::print(){
+    printf("array [");
+    for(int i=0; i<10;i++){
+        // printf("%d,",(arrPtr_[1]));
+    }
+    printf("]\n");
+    printf("array_[%p], arrptr_[%p], arrSharedptr_[%p]\n",
+                array_,arrPtr_.get(),arrSharedPtr_.get());
+}
+
+int testFunc(){
+
+    TestClass test;
+    test.print();
+    return 0;
 }
